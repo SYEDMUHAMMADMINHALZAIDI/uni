@@ -354,124 +354,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (headerRoleText) headerRoleText.textContent = profile.exclusiveLabel;
 
     const sidebarAdminOverviewGroup = document.getElementById('sidebarAdminOverviewGroup');
-    const sidebarUserAdminGroup = document.getElementById('sidebarUserAdminGroup');
-    const sidebarRoleOverviewGroup = document.getElementById('sidebarRoleOverviewGroup');
-    const sidebarRoleGroupTitle = document.getElementById('sidebarRoleGroupTitle');
-    const sidebarRoleNavList = document.getElementById('sidebarRoleNavList');
-    const sidebarLeadManagementGroup = document.getElementById('sidebarLeadManagementGroup');
-    const sidebarSalesAgentGroup = document.getElementById('sidebarSalesAgentGroup');
-    const sidebarComplianceGroup = document.getElementById('sidebarComplianceGroup');
-    const sidebarUnderwriterGroup = document.getElementById('sidebarUnderwriterGroup');
-    const sidebarFinanceGroup = document.getElementById('sidebarFinanceGroup');
-    const sidebarHRGroup = document.getElementById('sidebarHRGroup');
+    const sidebarRolePortalsGroup = document.getElementById('sidebarRolePortalsGroup');
+
+    const navRoleLeadManagement = document.getElementById('navRoleLeadManagement');
+    const navRoleSalesAgent = document.getElementById('navRoleSalesAgent');
+    const navRoleCompliance = document.getElementById('navRoleCompliance');
+    const navRoleUnderwriter = document.getElementById('navRoleUnderwriter');
+    const navRoleFinance = document.getElementById('navRoleFinance');
+    const navRoleHR = document.getElementById('navRoleHR');
+
+    const allRoleNavItems = [
+      { el: navRoleLeadManagement, key: 'role-lead-management' },
+      { el: navRoleSalesAgent, key: 'role-sales-agent' },
+      { el: navRoleCompliance, key: 'role-compliance' },
+      { el: navRoleUnderwriter, key: 'role-underwriter' },
+      { el: navRoleFinance, key: 'role-finance' },
+      { el: navRoleHR, key: 'role-hr' }
+    ];
 
     if (profile.roleKey === 'admin') {
-      // Admin: Full visibility across all boxes, Lead Management, Sales Agent, Compliance, Underwriter, Finance, and HR dropdowns
+      // Admin: View Admin Dashboard overview and all 6 role portal direct links
       if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.remove('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.remove('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.remove('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.remove('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.remove('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.remove('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.remove('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.remove('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-lead-management') {
-      // Lead Management User: Direct access to Lead Management dashboard & all detail pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.remove('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-sales-agent') {
-      // Sales Agent User: Direct access to Sales Agent portal & all 8 subview pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.remove('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-compliance') {
-      // Compliance Officer: Direct access to Compliance portal & all 4 subview pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.remove('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-underwriter') {
-      // Underwriter: Direct access to Underwriter portal & all 4 subview pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.remove('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-finance') {
-      // Finance Officer: Direct access to Finance portal & all 5 subview pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.remove('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
-    } else if (profile.roleKey === 'role-hr') {
-      // HR Manager: Direct access to HR portal & all 4 subview pages
-      if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.remove('hidden');
-      if (sidebarRoleOverviewGroup) sidebarRoleOverviewGroup.classList.add('hidden');
+      if (sidebarRolePortalsGroup) sidebarRolePortalsGroup.classList.remove('hidden');
+      allRoleNavItems.forEach(item => {
+        if (item.el) item.el.classList.remove('hidden');
+      });
     } else {
-      // Non-Admin: Restricted to their specific role dashboard ONLY!
+      // Role User: Hide Admin Dashboard, show ONLY their role portal page on the left
       if (sidebarAdminOverviewGroup) sidebarAdminOverviewGroup.classList.add('hidden');
-      if (sidebarUserAdminGroup) sidebarUserAdminGroup.classList.add('hidden');
-      if (sidebarLeadManagementGroup) sidebarLeadManagementGroup.classList.add('hidden');
-      if (sidebarSalesAgentGroup) sidebarSalesAgentGroup.classList.add('hidden');
-      if (sidebarComplianceGroup) sidebarComplianceGroup.classList.add('hidden');
-      if (sidebarUnderwriterGroup) sidebarUnderwriterGroup.classList.add('hidden');
-      if (sidebarFinanceGroup) sidebarFinanceGroup.classList.add('hidden');
-      if (sidebarHRGroup) sidebarHRGroup.classList.add('hidden');
-      if (sidebarRoleOverviewGroup) {
-        sidebarRoleOverviewGroup.classList.remove('hidden');
-        if (sidebarRoleGroupTitle) {
-          sidebarRoleGroupTitle.textContent = `${profile.roleBadge} Portal`;
+      if (sidebarRolePortalsGroup) sidebarRolePortalsGroup.classList.remove('hidden');
+      allRoleNavItems.forEach(item => {
+        if (item.el) {
+          if (item.key === profile.roleKey) {
+            item.el.classList.remove('hidden');
+          } else {
+            item.el.classList.add('hidden');
+          }
         }
-        if (sidebarRoleNavList) {
-          sidebarRoleNavList.innerHTML = `
-            <li>
-              <a href="#${profile.defaultRoute}" class="nav-link active" data-route="${profile.defaultRoute}">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                  <path d="M2 17l10 5 10-5"></path>
-                  <path d="M2 12l10 5 10-5"></path>
-                </svg>
-                <span>${profile.portalTitle}</span>
-              </a>
-            </li>
-          `;
-        }
-      }
+      });
     }
   }
 
@@ -807,147 +727,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Synchronize UI with user role state
     applyUserRoleState(profile.roleKey, customUserData);
-
-    // Auto-open dropdown if route is within user management, lead management, or sales agent dropdown
-    const userDropdown = document.getElementById('userAdminDropdown');
-    const leadDropdown = document.getElementById('leadManagementDropdown');
-    const salesDropdown = document.getElementById('salesAgentDropdown');
-
-    const leadRoutes = [
-      'role-lead-management',
-      'lead-extractor',
-      'incoming-leads',
-      'assigned-leads',
-      'unassigned-leads',
-      'partner-quote-requests',
-      'renewal-leads-pipeline',
-      'corporate-plans',
-      'broker-affiliate-intake',
-      'duplicate-interceptions'
-    ];
-
-    const salesRoutes = [
-      'role-sales-agent',
-      'sales-assigned-leads',
-      'sales-quote-requests',
-      'sales-comparison-sheets',
-      'sales-renewals',
-      'sales-ocr-docs',
-      'sales-payment-links',
-      'sales-issued-policies',
-      'sales-commissions'
-    ];
-
-    const complianceDropdown = document.getElementById('complianceDropdown');
-    const complianceRoutes = [
-      'role-compliance',
-      'compliance-sanctions',
-      'compliance-kyc-verification',
-      'compliance-beneficiary-audit',
-      'compliance-audit-logs'
-    ];
-
-    const underwriterDropdown = document.getElementById('underwriterDropdown');
-    const underwriterRoutes = [
-      'role-underwriter',
-      'underwriter-quotes-queue',
-      'underwriter-medical-rating',
-      'underwriter-motor-rating',
-      'underwriter-binding-authorizations'
-    ];
-
-    const financeDropdown = document.getElementById('financeDropdown');
-    const financeRoutes = [
-      'role-finance',
-      'finance-debit-notes',
-      'finance-credit-notes',
-      'finance-carrier-payables',
-      'finance-commission-soa',
-      'finance-vat-tax'
-    ];
-
-    const hrDropdown = document.getElementById('hrDropdown');
-    const hrRoutes = [
-      'role-hr',
-      'hr-employees',
-      'hr-attendance-leaves',
-      'hr-payroll-wps',
-      'hr-benefits-medical'
-    ];
-
-    if (userDropdown) {
-      if (profile.roleKey === 'admin' && dropdownRoutes.includes(currentRoute)) {
-        userDropdown.classList.add('open');
-      } else {
-        userDropdown.classList.remove('open');
-      }
-    }
-
-    if (leadDropdown) {
-      if (profile.roleKey === 'role-lead-management') {
-        leadDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && leadRoutes.includes(currentRoute)) {
-        leadDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        leadDropdown.classList.remove('open');
-      }
-    }
-
-    if (salesDropdown) {
-      if (profile.roleKey === 'role-sales-agent') {
-        salesDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && salesRoutes.includes(currentRoute)) {
-        salesDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        salesDropdown.classList.remove('open');
-      }
-    }
-
-    if (complianceDropdown) {
-      if (profile.roleKey === 'role-compliance') {
-        complianceDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && complianceRoutes.includes(currentRoute)) {
-        complianceDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        complianceDropdown.classList.remove('open');
-      }
-    }
-
-    if (underwriterDropdown) {
-      if (profile.roleKey === 'role-underwriter') {
-        underwriterDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && underwriterRoutes.includes(currentRoute)) {
-        underwriterDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        underwriterDropdown.classList.remove('open');
-      }
-    }
-
-    if (financeDropdown) {
-      if (profile.roleKey === 'role-finance') {
-        financeDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && financeRoutes.includes(currentRoute)) {
-        financeDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        financeDropdown.classList.remove('open');
-      }
-    }
-
-    if (hrDropdown) {
-      if (profile.roleKey === 'role-hr') {
-        hrDropdown.classList.add('open');
-      } else if (profile.roleKey === 'admin' && hrRoutes.includes(currentRoute)) {
-        hrDropdown.classList.add('open');
-      } else {
-        // On admin dashboard, keep it collapsed (hidable) by default!
-        hrDropdown.classList.remove('open');
-      }
-    }
 
     // Hide all subviews
     subviews.forEach(view => view.classList.add('hidden'));
