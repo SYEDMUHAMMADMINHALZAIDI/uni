@@ -1,0 +1,5 @@
+# Temporary files & logs
+cloudflared.exe
+*.log
+scratch_check.py
+legacy_backup/
